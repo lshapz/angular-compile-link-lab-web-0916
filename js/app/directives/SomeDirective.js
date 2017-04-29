@@ -9,14 +9,18 @@ function SomeDirective() {
 
 		// },
 		compile: function ($element, $attrs) {
-       pre: function (scope, element, attrs) {
-          element = 'not this'
-      },
-      post: function(scope, element, attrs) {
-                console.log('post-link');
-      }
-    
+      return{ 
+	      pre: function (scope, element, attrs) {
+	          element[0].innerText = 'not this'
+	      },
+	      post: function(scope, element, attrs) {
+					element[0].addEventListener('click', function () {
+						alert('Hey!');
+					});
+	      }
+    	}
 
+		}
 	}
 }
 
